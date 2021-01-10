@@ -99,7 +99,6 @@ img {
   font-weight: 200;
 }
 
-
 /*modals*/
 .modalDialog {
   position: fixed;
@@ -142,52 +141,33 @@ img {
     color: black;
 }
 
+/*to the top button*/
+.footer_top {
+  position:fixed;
+  bottom: 1vh;
+  right: 2vh;
+  width:5vw;
+  margin: 0 auto;
+}
+
+/* sources button */
+.footer_sources {
+  position:fixed;
+  bottom: 1vh;
+  left: 2vh;
+  width:5vw;
+  margin: 0 auto;
+}
+
+/* top and sources button images */
 .footer_img {
   width: 50%;
   background-color: #eaeaea;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding: 1vh;
 }
 
-/*to the top button*/
-footer {
-  position:fixed;
-  bottom: 1vh;
-  right: -2vh;
-  width:5%;
-  margin: 0 auto;
-}
-
-.footer_sources {
-  position:fixed;
-  bottom: 1vh;
-  left: 2vh;
-  width:5%;
-  margin: 0 auto;
-}
-
-.choose_sources_menu{
-  width: 50%;
-  background-color: #eaeaea;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 0.5rem;
-}
-
-/* this styles the sources menu 'circle'*/
-.sources_show img {
-  width: 10px;
-  position: relative;
-  right: -4px;
-  top: 5px;
-}
-
-.sources_show{
-  cursor: pointer;
-  position:absolute;
-  right:10px;
-}
 
 /* modal checkboxes */
 form {
@@ -319,5 +299,18 @@ label:nth-of-type(odd){
   .modalDialog {
     top: 0;
     overflow-y: auto;
+  }
+}
+
+/* buttons */
+@media (max-width: 50rem) {
+  .footer_top {
+    width: 10%;
+  }
+  .footer_sources {
+    width: 10%;
+  }
+  .footer_img {
+    width: 100%;
   }
 }
