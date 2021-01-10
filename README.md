@@ -8,7 +8,7 @@ Aggrify is a news aggregator that uses NewsApi to generate the latest news artic
 
 Here is a gif of Aggrify in action:
 
-[demo_gif](demo_gifs/aggrify_example.gif)
+![demo_gif](demo_gifs/aggrify_example.gif)
 
 
 Check aggrify out here: http://aggrify.pythonanywhere.com/
