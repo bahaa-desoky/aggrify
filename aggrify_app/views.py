@@ -45,10 +45,12 @@ def main(request):
                 date = article['publishedAt'].replace('-', '/').replace('2020/', '').replace('T', ' ')
                 dates.append(date[:11])
 
-                description = article['description'].replace('<li>', '').replace('<ul>', '').replace('<ol>',
-                                                                                                     '').replace(
-                    '</li>', '').replace('</ul>', '').replace('</ol>', '')
-                descriptions.append(description)
+                description = article['description']
+                if description is not None:
+                    description = article['description'].replace('<li>', '').replace('<ul>', '').replace('<ol>',
+                                                                                                         '').replace(
+                        '</li>', '').replace('</ul>', '').replace('</ol>', '')
+                    descriptions.append(description)
 
                 link = article['url']
                 links.append(link)
