@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggrify</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'aggrify_app/index.css' %}">
+    <link rel="icon" href="{% static 'aggrify_app/favicon.png' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <!--modals-->
+    <div id="openModal-sources" class="modalDialog">
+      <div>
+         <a href="#close" class="close">x</a>
+         <h2 class="modal-title">All Sources</h2>
+         <h5 class="modal-instructions">Choose up to five sources at a time</h5>
+         <form method="post">
+            {% csrf_token %}
+            {# tech sources #}
+            <div class="tech">
+                <h5>Tech, Science, and Finance</h5>
+                {%  for item in sources_list.0 %}
+                    <label for="{{item}}">
+                        <input class="source-checkbox" name="sources" value="{{ item }}" id="{{item}}" type="checkbox">{{item}}
+                    </label>
+                {% endfor %}<br>
+              </div>
+             {# sports sources #}
+              <div class="sports">
+                <h5>Sports</h5>
+                {%  for item in sources_list.1 %}
+                    <label for="{{item}}">
+                        <input class="source-checkbox" name="sources" value="{{ item }}" id="{{item}}" type="checkbox">{{item}}
+                    </label>
+                {% endfor %}<br>
+              </div>
+             {# entertainment sources #}
+              <div class="entertainment">
+                <h5>Entertainment</h5>
+                {%  for item in sources_list.2 %}
+                    <label for="{{item}}">
+                        <input class="source-checkbox" name="sources" value="{{ item }}" id="{{item}}" type="checkbox">{{item}}
+                    </label>
+                {% endfor %}<br>
+              </div>
+             {# north america sources #}
+              <div class="na-sources">
+                <h5>North American Sources</h5>
+                {%  for item in sources_list.3 %}
+                    <label for="{{item}}">
+                        <input class="source-checkbox" name="sources" value="{{ item }}" id="{{item}}" type="checkbox">{{item}}
+                    </label>
+                {% endfor %}<br>
+              </div>
+             {# world sources #}
+              <div class="world-sources">
+                <h5>World Sources</h5>
+                {%  for item in sources_list.4 %}
+                    <label for="{{item}}">
+                        <input class="source-checkbox" name="sources" value="{{ item }}" id="{{item}}" type="checkbox">{{item}}
+                    </label>
+                {% endfor %}<br>
+              </div>
+             <button class="submit-button" onclick="window.location.href='#close'" type="submit">Submit</button>
+         </form>
+      </div>
+    </div>
+
+    <!-- cards -->
+    <ul class="cards">
+        {% for item in main %}
+          <li class="cards_item">
+            <div class="card">
+              <img src="{{ item.5 }}" onerror="this.src='https://iacgobig.com/wp-content/uploads/2019/07/placeholder.png'" class="card__image">
+              <div class="card_content">
+                <div class="card_title">{{item.0}}</div>
+                <h4 class="card_date">{{ item.2 }}</h4>
+                <p class="card_text">{{item.3}} </p>
+                <h4 class="card_author">{{ item.1 }}</h4>
+                <a target="_blank" href="{{ item.4 }}" class="btn card_btn">View full article</a>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+    </ul>
+
+
+    <!-- footer buttons -->
+    <footer>
+        <div onclick="topFunction()" class="footer_img">
+            <img src="{% static 'aggrify_app/up_arrow.png' %}" alt="">
+        </div>
+    </footer>
+
+    <div class="footer_sources">
+        <div onclick="window.location.href='#openModal-sources'" class="footer_img">
+            <img src="{% static 'aggrify_app/menu.png' %}" alt="">
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+    {# limits number of checked boxes to 5 #}
+    jQuery(function(){
+       var max = 5;
+       var checkboxes = jQuery('input[type="checkbox"]');
+
+       checkboxes.change(function(){
+          var current = checkboxes.filter(':checked').length;
+           checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+       });
+    });
+
+    {# scroll to top #}
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>
+</html>
